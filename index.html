@@ -1,0 +1,95 @@
+<!-- <!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Student Alertness Detection System</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" rel="stylesheet">
+</head>
+<body>
+    <div class="container">
+        <div class="jumbotron text-center">
+            <h1>Student Alertness Detection System</h1>
+            <p>Register, Recognize, and Detect Alertness</p>
+        </div>
+        <div class="row">
+            <div class="col-md-4">
+                <a href="/register" class="btn btn-primary btn-block">Register</a>
+            </div>
+            <div class="col-md-4">
+                <a href="/recognize" class="btn btn-primary btn-block">Recognize</a>
+            </div>
+            <div class="col-md-4">
+                <a href="/detect-alertness" class="btn btn-primary btn-block">Detect Alertness</a>
+            </div>
+            <div class="col-md-4">
+                <a href="/train" class="btn btn-primary btn-block">Train</a>
+            </div>
+            <div class="col-md-4">
+                <a href="/evaluate" class="btn btn-primary btn-block">Evaluate</a>
+            </div>
+        </div>
+    </div>
+</body>
+</html> -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Student Alertness Detection System</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" rel="stylesheet">
+</head>
+<body>
+    <div class="container">
+        <div class="jumbotron text-center">
+            <h1>Student Alertness Detection System</h1>
+            <p>Register, Recognize, and Detect Alertness</p>
+        </div>
+        <div class="row">
+            <div class="col-md-4">
+                <a href="/register" class="btn btn-primary btn-block">Register</a>
+            </div>
+            <div class="col-md-4">
+                <a href="/recognize" class="btn btn-primary btn-block">Recognize</a>
+            </div>
+            <div class="col-md-4">
+                <a href="/detect-alertness" class="btn btn-primary btn-block">Detect Alertness</a>
+            </div>
+            <div class="col-md-4">
+                <button class="btn btn-primary btn-block" onclick="trainModel()">Train</button>
+            </div>
+            <div class="col-md-4">
+                <button class="btn btn-primary btn-block" onclick="evaluateModel()">Evaluate</button>
+            </div>
+        </div>
+        <div id="result" class="text-center mt-4"></div>
+    </div>
+
+    <script>
+        function trainModel() {
+            fetch('/train')
+                .then(response => response.json())
+                .then(data => {
+                    document.getElementById('result').innerHTML = `<p>${data.message}</p><img src="${data.image}" class="img-fluid"/>`;
+                });
+        }
+
+        function evaluateModel() {
+            fetch('/evaluate')
+                .then(response => response.json())
+                .then(data => {
+                    document.getElementById('result').innerHTML = `
+                        <p>Accuracy: ${data.accuracy.toFixed(2)}</p>
+                        <p>Precision: ${data.precision.toFixed(2)}</p>
+                        <p>Recall: ${data.recall.toFixed(2)}</p>
+                        <p>F1 Score: ${data.f1_score.toFixed(2)}</p>
+                        <img src="${data.image}" class="img-fluid"/>
+                    `;
+                });
+        }
+    </script>
+</body>
+</html>

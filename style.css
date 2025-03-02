@@ -1,0 +1,148 @@
+body, h1, h2, h3, p {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Poppins', sans-serif;
+}
+body {
+    overflow-y: auto; /* Enables vertical scrolling */
+}
+
+.container {
+    max-height: 90vh; /* Keeps the main container within view */
+    overflow-y: auto; /* Allows scrolling inside the container */
+    padding-bottom: 20px;
+}
+
+/* Full-screen background with a high-quality photo and animated gradient */
+body {
+    background: url('https://image.slidesdocs.com/responsive-images/background/business-poster-technology-website-beautiful-powerpoint-background_2e1baa6d1b__960_540.jpg') no-repeat center center fixed;
+    background-size: cover;
+    color: #fff;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    text-align: center;
+    overflow: hidden;
+    position: relative;
+}
+
+/* Dark overlay to enhance text visibility */
+body::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.6);
+    z-index: -1;
+}
+
+/* Container with a stunning card design */
+.container {
+    background: rgba(0, 255, 255, 0.2);
+    border-radius: 15px;
+    padding: 2rem;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+    max-width: 800px;
+    width: 90%;
+    backdrop-filter: blur(10px);
+    border: 1px solid rgba(255, 255, 255, 0.3);
+}
+
+/* Heading with a unique font and text-shadow */
+h1 {
+    font-size: 4rem;
+    margin-bottom: 1rem;
+    font-weight: 700;
+    color: #f1f1f1;
+    background: linear-gradient(45deg, #ff6f61, #d53369);
+    background-clip: text;
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    text-shadow: 2px 2px 8px rgba(0, 0, 0, 0.7);
+    animation: textAnimation 5s infinite alternate;
+}
+
+/* Keyframes for text animation */
+@keyframes textAnimation {
+    0% { text-shadow: 2px 2px 8px rgba(0, 0, 0, 0.7); }
+    100% { text-shadow: 4px 4px 12px rgba(0, 0, 0, 0.9); }
+}
+
+/* Paragraph styling with custom color and line-height */
+p {
+    font-size: 1.5rem;
+    line-height: 1.7;
+    margin-bottom: 1.5rem;
+    color: #eaeaea;
+    max-width: 600px;
+    margin: 0 auto;
+}
+
+/* Button with advanced styling and hover effect */
+.btn {
+    background: linear-gradient(to right, #ff7e5f, #feb47b);
+    border: none;
+    color: blue;
+    padding: 12px 24px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 1.2rem;
+    margin: 10px 0;
+    border-radius: 50px;
+    transition: transform 0.3s ease, box-shadow 0.3s ease, background 0.3s ease;
+    cursor: pointer;
+    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.3);
+    position: relative;
+    overflow: hidden;
+}
+
+/* Button hover effect with scaling and shadow change */
+.btn::before {
+    content: '';
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 300%;
+    height: 300%;
+    background: rgba(255, 255, 255, 0.2);
+    transition: transform 0.3s ease;
+    transform: translate(-50%, -50%) scale(0);
+    border-radius: 50%;
+    z-index: 0;
+}
+
+.btn:hover::before {
+    transform: translate(-50%, -50%) scale(1);
+}
+
+.btn:hover {
+    background: linear-gradient(to right, #feb47b, #ff7e5f);
+    transform: scale(1.05);
+    box-shadow: 0 12px 24px rgba(0, 0, 0, 0.4);
+    color: #fff;
+    z-index: 1;
+}
+
+/* Responsive design adjustments */
+@media (max-width: 768px) {
+    h1 {
+        font-size: 3.5rem;
+    }
+    p {
+        font-size: 1.2rem;
+    }
+}
+
+@media (max-width: 480px) {
+    h1 {
+        font-size: 2.5rem;
+    }
+    p {
+        font-size: 1rem;
+    }
+}
